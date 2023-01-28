@@ -10,9 +10,9 @@
  *         this.val = val;
  *         this.left = left;
  *         this.right = right;
- *     }
- * }
- */
+
+
+
 class Solution {
     List<Integer>l=new ArrayList<>();
     public List<Integer> inorderTraversal(TreeNode root) {
