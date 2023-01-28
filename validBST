@@ -1,0 +1,27 @@
+class Solution {
+    List<Integer>l=new ArrayList<>();
+    public List<Integer> INOT(TreeNode root){
+        if(root==null){
+            return l;
+        }
+        INOT(root.left);
+        l.add(root.val);
+        INOT(root.right);
+        return l;
+    }
+    public boolean isValidBST(TreeNode root) {
+        List<Integer>m=INOT(root);
+        System.out.println(m);
+        if(m.size()==1){
+            return true;
+        }
+        Integer temp=m.get(0);
+        for (int i=1;i<m.size();i++){
+            if(m.get(i)<=temp){
+                return false;
+            }
+            temp=m.get(i);
+        }
+        return true;
+    }
+}
