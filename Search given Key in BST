@@ -1,0 +1,32 @@
+class Solution {
+    public TreeNode searchBST(TreeNode root, int val) {
+        if(root==null){
+            return null;
+        }
+        if(root.val==val){
+            return root;
+        }
+        Queue<TreeNode> q=new LinkedList<>();
+        q.add(root);
+        while(!q.isEmpty()){
+            int size=q.size();
+            for(int i=0;i<size;i++){
+                TreeNode cur=q.poll();
+
+                if(cur.left!=null){
+                    if(cur.left.val==val){
+                        return cur.left;
+                    }
+                    q.add(cur.left);
+                }
+                if(cur.right!=null){
+                    if(cur.right.val==val){
+                        return cur.right;
+                    }
+                    q.add(cur.right);
+                }
+            }
+        }
+        return null;
+    }
+}
