@@ -1,0 +1,32 @@
+class Solution {
+    int index=0;
+    public int getIndex(int[] inorder ,int lef,int righ,int val){
+        int i;
+        for(i=lef;i<=righ;i++){
+            if(inorder[i]==val){
+                return i;
+            }
+        }
+        return i;
+    }
+    public TreeNode construct(int[] inorder,int[]preorder,int left,int right){
+        if(left>right){
+            return null;
+        }
+        TreeNode node=new TreeNode(preorder[index++]);
+        if(left==right){
+            return node;
+        }
+        int midle=getIndex(inorder,left,right,node.val);
+        node.left=construct(inorder,preorder,left,midle-1);
+        node.right=construct(inorder,preorder,midle+1,right);
+        return  node;
+
+    }
+    
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+        TreeNode newNode=construct(inorder,preorder,0,preorder.length-1);
+        return newNode;
+        
+    }
+}
