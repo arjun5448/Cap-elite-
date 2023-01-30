@@ -1,0 +1,28 @@
+class Solution {
+    public int getIndex(int [] pre,int start,int right1,int val){
+        int i;
+        for(i=start;i<=right1;i++){
+            if(pre[i]>val){
+                return i;
+            }
+        }
+        return i;
+    }
+    public TreeNode construct(int[] preorder,int left,int right,int idx){
+        if(left>right){
+            return null;
+        }
+        TreeNode node=new TreeNode(preorder[idx]);
+        if(left==right){
+            return node;
+        }
+        int midle=getIndex(preorder,left,right,node.val);
+        node.left=construct(preorder,left+1,midle-1,left+1);
+        node.right=construct(preorder,midle,right,midle);
+        return node;
+    }
+    public TreeNode bstFromPreorder(int[] preorder) {
+        TreeNode Newnode =construct(preorder,0,preorder.length-1,0);
+        return Newnode;
+    }
+}
