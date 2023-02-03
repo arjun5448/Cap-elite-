@@ -1,0 +1,15 @@
+class Solution {
+    int c=0;
+      public int rangeSumBST(TreeNode root,int val,int val1){
+        if(root==null){
+            return c;
+        }
+        rangeSumBST(root.left,val,val1);
+        if(root.val>=val && root.val<=val1){
+            c+=root.val;
+        }
+        rangeSumBST(root.right,val,val1);
+        return c;
+
+    }
+}
