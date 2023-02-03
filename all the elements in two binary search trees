@@ -1,0 +1,22 @@
+class Solution {
+     static List<Integer>l=new ArrayList<>();
+      public static void li(){
+          l.clear();
+      }
+      public static  void inorder (TreeNode root){
+        if(root!=null){
+        inorder(root.left);
+        l.add(root.val);
+        inorder(root.right);
+        }
+
+    }
+
+    public List<Integer> getAllElements(TreeNode root1, TreeNode root2) {
+        li();
+        inorder(root1);
+        inorder(root2);
+        Collections.sort(l);
+        return l;
+    }
+}
